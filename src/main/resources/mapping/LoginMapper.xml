@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.le.system.dao.UserDao">
+    <select id="findAllUser" resultType="net.le.system.entity.User" resultMap="userResultMap">
+        SELECT * FROM t_user
+    </select>
+    <resultMap id="userResultMap" type="net.le.system.entity.User">
+        <id property="id" column="id"></id>
+        <result property="userNumber" column="l_user_num"></result>
+        <result property="userName" column="l_user_name"></result>
+        <result property="userPhone" column="l_user_phone"></result>
+        <result property="nickName" column="l_nick_name"></result>
+        <result property="password" column="l_user_pwd"></result>
+        <result property="createDate" column="l_create_date"></result>
+        <result property="editDate" column="l_edit_date"></result>
+        <result property="createUer" column="l_create_uer"></result>
+        <result property="editUser" column="l_edit_user"></result>
+    </resultMap>
+</mapper>

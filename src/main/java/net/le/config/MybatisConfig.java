@@ -5,14 +5,18 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.core.io.support.ResourcePatternResolver;
+
+import java.io.IOException;
 
 @Configuration
 @PropertySource("classpath:jdbc.properties")
-@MapperScan("classpath:net.le.**.dao")
+@MapperScan(basePackages = "net.le.**.dao")
 public class MybatisConfig {
 
     @Value("${mysql.driver}")
@@ -48,11 +52,11 @@ public class MybatisConfig {
      * @return
      */
     @Bean
-    public SqlSessionFactoryBean setSqlSessionFactory (DruidDataSource dataSource) {
+    public SqlSessionFactoryBean setSqlSessionFactory (DruidDataSource dataSource) throws IOException {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
-        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-//        sqlSessionFactoryBean.setMapperLocations(new Resource[] { resolver.getResource("net/le/**/dao/mapping/*.xml")});
+        ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:mapping/*Mapper.xml"));
 //        sqlSessionFactoryBean.setConfigLocation(resolver.getResource("classpath:mybatis-config.xml"));
         return sqlSessionFactoryBean;
     }
