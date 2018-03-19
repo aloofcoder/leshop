@@ -17,35 +17,25 @@
 
         <ul class="nav">
             <li>
-                <a href="#">
+                <a href="#" class="user-center">
                     <i class="pe-7s-user"></i>
                     <p>用户管理</p>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="#" class="business-center">
                     <i class="pe-7s-server"></i>
                     <p>业务管理</p>
                 </a>
             </li>
             <li>
-                <a href="#">
-                    <i class="pe-7s-note2"></i>
-                    <p>权限管理</p>
-                </a>
-            </li>
-            <li>
-                <a href="#">
+                <a href="#" class="system-center">
                     <i class="pe-7s-config"></i>
                     <p>系统管理</p>
                 </a>
             </li>
-            <%--<li>--%>
-                <%--<a href="icons.html">--%>
-                    <%--<i class="pe-7s-science"></i>--%>
-                    <%--<p>Icons</p>--%>
-                <%--</a>--%>
-            <%--</li>--%>
         </ul>
     </div>
 </div>
+<script type="text/javascript">
+</script>

@@ -25,6 +25,11 @@ dependencies {
             'mysql:mysql-connector-java:5.1.30',
             'com.alibaba:druid:1.1.2',
             'javax.servlet:javax.servlet-api:3.1.0',
-            'jstl:jstl:1.2'
+            'jstl:jstl:1.2',
+            'org.json:json:20160810',
+            'com.fasterxml.jackson.core:jackson-core:2.8.3',
+            'com.fasterxml.jackson.core:jackson-annotations:2.9.3',
+            'com.fasterxml.jackson.core:jackson-databind:2.9.0',
+            'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
     )
 }

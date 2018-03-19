@@ -8,6 +8,7 @@ public class User implements Serializable {
     private Integer id;
     private String userNumber;
     private String userName;
+    private String userPhone;
     /** 昵称*/
     private String nickName;
     private String password;
@@ -38,6 +39,10 @@ public class User implements Serializable {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
     }
 
     public void setNickName(String nickName) {
@@ -80,6 +85,10 @@ public class User implements Serializable {
         return nickName;
     }
 
+    public String getUserPhone() {
+        return userPhone;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -106,6 +115,7 @@ public class User implements Serializable {
                 "id=" + id +
                 ", userNumber='" + userNumber + '\'' +
                 ", userName='" + userName + '\'' +
+                ", userPhone='" + userPhone + '\'' +
                 ", nickName='" + nickName + '\'' +
                 ", password='" + password + '\'' +
                 ", createDate=" + createDate +

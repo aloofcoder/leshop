@@ -48,34 +48,7 @@
     <div class="main-panel">
         <%@include file="top.jsp"%>
         <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Striped Table with Hover</h4>
-                                <p class="category">Here is a subtitle for this table</p>
-                            </div>
-                            <div class="content table-responsive table-full-width">
-                                <table class="table table-hover table-striped">
-                                    <thead>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Salary</th>
-                                    <th>Country</th>
-                                    <th>City</th>
-                                    </thead>
-                                    <tbody>
-                                        <c:forEach items="">
 
-                                        </c:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <%@ include file="foot.jsp"%>
 
@@ -124,6 +97,14 @@
         });
 
     });
+    $(".user-center").click(function () {
+        $(".user-center").parent().addClass("active")
+        $(".content").load("getuserpage.do")
+    })
+    $(".business-center").click(function () {
+        $(".business-center").parent().addClass("active")
+        $(".content").load("home.do")
+    })
 </script>
 
 </html>

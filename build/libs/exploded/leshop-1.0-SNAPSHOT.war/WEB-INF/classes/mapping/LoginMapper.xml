@@ -13,7 +13,7 @@
         <result property="password" column="l_user_pwd"></result>
         <result property="createDate" column="l_create_date"></result>
         <result property="editDate" column="l_edit_date"></result>
-        <result property="createUer" column="l_create_uer"></result>
+        <result property="createUser" column="l_create_user"></result>
         <result property="editUser" column="l_edit_user"></result>
     </resultMap>
 </mapper>
