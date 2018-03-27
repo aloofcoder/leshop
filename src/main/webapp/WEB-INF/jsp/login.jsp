@@ -13,6 +13,7 @@
 
 
 <!-- Bootstrap core CSS     -->
+<script src="${basePath}/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
 <link href="${basePath}/assets/css/bootstrap.min.css" rel="stylesheet" />
 
 <!-- Animation library for notifications   -->
@@ -31,49 +32,76 @@
     <title>Home</title>
 </head>
 <body>
-    <div class="" style="width: 100%; height: 15%;">
-        <div class="col-md-3 col-md-offset-2">
-            <br/>
-            <div class="col-md-2" style="padding-top: 10px;">
-                <img src="${basePath}/assets/img/timg.jpg" width="70">
-            </div>
+    <div class="wrapper">
+        <div class="header auto" style="height: 15%;">
             <div class="col-md-6">
-                <h3 style="color: red;"><b>乐商城</b></h3>
-                <span>&nbsp;&nbsp;&nbsp;leshop.net</span>
+                <div class="col-md-offset-1 col-md-1">
+                    <img src="${basePath}/assets/img/timg.jpg" width="70px;" style="margin-top: 30px;">
+                </div>
+                <div class="col-md-4">
+                    <h4 style="color: red;"><b>乐商城</b></h4>
+                    <span class="col-md-offset-1">le.net</span>
+                </div>
             </div>
         </div>
-        <div class="col-md-6" style="padding-top: 70px;">
-            <p class="text-center" style="color: #333;">乐购物陪伴你的健康</p>
-        </div>
-    </div>
-    <div class="" style="width: 100%; height: 70%;background-image: url('${basePath}/assets/img/login.jpg')";>
-        <div class="col-md-12">
-            <div class="col-md-6 col-md-offset-6" style="padding-top: 100px;">
-                <div class="col-md-6 col-md-offset-3" style="border-radius: 6px;border: 1px solid #eee; padding: 10px 50px 30px 50px;background-color: #fff;">
+        <div class="content auto" style="height: 85%;background-image: url('${basePath}/assets/img/login.jpg')">
+            <div class="col-md-6 col-md-offset-6">
+                <div class="col-md-5 col-md-offset-3" style="background-color: rgba(255, 255, 255, 0.8);margin-top: 100px; padding: 0 40px 0 40px;border-radius: 3%;">
                     <form>
-                        <h4 style="color: #3c763d">&nbsp;&nbsp;账户登录</h4>
+                        <h4 style="color: #3c763d">账户登录</h4>
                         <hr/>
+                        <span id="loginmsg" style="color: #d43f3a;display: block;padding-bottom: 20px;"></span>
                         <label class="control-label">用户名</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" name="userNumber">
                         <br/>
                         <label class="control-label">密码</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" name="userPassword">
                         <br/>
                         <br/>
-                        <button type="button" class="btn btn-success" style="width: 100%;">登录</button>
+                        <button id="loginBtn" type="button" class="btn btn-success" style="width: 100%;">登录</button>
                         <br/>
                         <br/>
                         <a href="#" class="pull-left">立即注册</a>
                         <a href="#" class="pull-right">忘记密码</a>
+                        <br/>
+                        <br/>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="" style="width: 100%; height: 15%;">
-        <div class="col-md-8 col-md-offset-2">
-            <%@ include file="foot.jsp"%>
+        <div class="footer auto" style="height: 15%">
+
         </div>
     </div>
+    <script type="text/javascript">
+        $(function () {
+            $("#loginBtn").click(loginsystem)
+        });
+        function loginsystem () {
+            $($("#loginmsg")[0]).html("")
+            let userNumber = $("input[name='userNumber']").val()
+            let userPassword = $("input[name='userPassword']").val()
+            if (userNumber === '' && userPassword === '') {
+                $("#loginmsg").append("请输入用户名或密码")
+                return
+            }
+            if (userNumber === '') {
+                $("#loginmsg").append("请输入用户名")
+                return
+            }
+            if (userPassword === '') {
+                $("#loginmsg").append("请输入密码")
+                return
+            }
+            let param = {
+                userNumber: userNumber,
+                userPassword: userPassword
+            }
+            let url = 'userlogin.do'
+            $.post(url, param, function (res) {
+                
+            })
+        }
+    </script>
 </body>
 </html>
