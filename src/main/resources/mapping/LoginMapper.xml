@@ -4,6 +4,9 @@
     <select id="findAllUser" resultType="net.le.system.entity.User" resultMap="userResultMap">
         SELECT * FROM t_user
     </select>
+    <select id="findUserByUserName" resultMap="userResultMap" resultType="net.le.system.entity.User" parameterType="string">
+        SELECT * FROM t_user where l_user_name = #{UserName}
+    </select>
     <resultMap id="userResultMap" type="net.le.system.entity.User">
         <id property="id" column="id"></id>
         <result property="userNumber" column="l_user_num"></result>

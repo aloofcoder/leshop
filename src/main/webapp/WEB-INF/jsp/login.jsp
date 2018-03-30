@@ -52,10 +52,10 @@
                         <hr/>
                         <span id="loginmsg" style="color: #d43f3a;display: block;padding-bottom: 20px;"></span>
                         <label class="control-label">用户名</label>
-                        <input type="text" class="form-control" name="userNumber">
+                        <input type="text" class="form-control" name="userName">
                         <br/>
                         <label class="control-label">密码</label>
-                        <input type="text" class="form-control" name="userPassword">
+                        <input type="password" class="form-control" name="userPassword">
                         <br/>
                         <br/>
                         <button id="loginBtn" type="button" class="btn btn-success" style="width: 100%;">登录</button>
@@ -78,14 +78,15 @@
             $("#loginBtn").click(loginsystem)
         });
         function loginsystem () {
+            console.log('333333333333333333333333333')
             $($("#loginmsg")[0]).html("")
-            let userNumber = $("input[name='userNumber']").val()
+            let userName = $("input[name='userName']").val()
             let userPassword = $("input[name='userPassword']").val()
-            if (userNumber === '' && userPassword === '') {
+            if (userName === '' && userPassword === '') {
                 $("#loginmsg").append("请输入用户名或密码")
                 return
             }
-            if (userNumber === '') {
+            if (userName === '') {
                 $("#loginmsg").append("请输入用户名")
                 return
             }
@@ -94,12 +95,18 @@
                 return
             }
             let param = {
-                userNumber: userNumber,
-                userPassword: userPassword
+                userName: userName,
+                password: userPassword
             }
-            let url = 'userlogin.do'
-            $.post(url, param, function (res) {
-                
+            let url = 'login.do'
+            console.log(url,param)
+            $.post(url,param,function (res) {
+                console.log(res)
+                if (res.state === 1) {
+                    window.location="toMain.do"
+                } else {
+                    console.log(res.message)
+                }
             })
         }
     </script>
